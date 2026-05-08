@@ -1,0 +1,221 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.4205, -34.5807] },
+      "properties": {
+        "id": "zone_001",
+        "incident_count": 7,
+        "leve_count": 4,
+        "grave_count": 2,
+        "mortal_count": 1,
+        "predominant_hour_range": "20-23",
+        "predominant_weekday": "viernes",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "MOTO",
+        "address_label": "Plaza Italia — Av. Santa Fe y Av. Las Heras",
+        "comuna": "14",
+        "radius_meters": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.3811, -34.6147] },
+      "properties": {
+        "id": "zone_002",
+        "incident_count": 12,
+        "leve_count": 7,
+        "grave_count": 3,
+        "mortal_count": 2,
+        "predominant_hour_range": "07-09",
+        "predominant_weekday": "lunes",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "AUTO",
+        "address_label": "Av. 9 de Julio y Av. Belgrano",
+        "comuna": "1",
+        "radius_meters": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.3756, -34.6435] },
+      "properties": {
+        "id": "zone_003",
+        "incident_count": 9,
+        "leve_count": 5,
+        "grave_count": 2,
+        "mortal_count": 2,
+        "predominant_hour_range": "18-21",
+        "predominant_weekday": "jueves",
+        "via_type": "PUENTE",
+        "predominant_victim_mode": "MOTO",
+        "address_label": "Puente Pueyrredón — Acceso Sur",
+        "comuna": "4",
+        "radius_meters": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.4920, -34.5580] },
+      "properties": {
+        "id": "zone_004",
+        "incident_count": 5,
+        "leve_count": 3,
+        "grave_count": 2,
+        "mortal_count": 0,
+        "predominant_hour_range": "07-09",
+        "predominant_weekday": "martes",
+        "via_type": "AUTOPISTA",
+        "predominant_victim_mode": "AUTO",
+        "address_label": "Av. General Paz y Av. de los Constituyentes",
+        "comuna": "12",
+        "radius_meters": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.3814, -34.6037] },
+      "properties": {
+        "id": "zone_005",
+        "incident_count": 15,
+        "leve_count": 9,
+        "grave_count": 4,
+        "mortal_count": 2,
+        "predominant_hour_range": "00-03",
+        "predominant_weekday": "sábado",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "MOTO",
+        "address_label": "Obelisco — Av. 9 de Julio y Diagonal Norte",
+        "comuna": "1",
+        "radius_meters": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.4585, -34.5602] },
+      "properties": {
+        "id": "zone_006",
+        "incident_count": 4,
+        "leve_count": 3,
+        "grave_count": 1,
+        "mortal_count": 0,
+        "predominant_hour_range": "17-20",
+        "predominant_weekday": "miércoles",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "BICICLETA",
+        "address_label": "Av. Cabildo y Juramento",
+        "comuna": "13",
+        "radius_meters": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.4361, -34.6178] },
+      "properties": {
+        "id": "zone_007",
+        "incident_count": 3,
+        "leve_count": 3,
+        "grave_count": 0,
+        "mortal_count": 0,
+        "predominant_hour_range": "08-10",
+        "predominant_weekday": "lunes",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "PEATÓN",
+        "address_label": "Av. Rivadavia y Acoyte",
+        "comuna": "7",
+        "radius_meters": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.3811, -34.6275] },
+      "properties": {
+        "id": "zone_008",
+        "incident_count": 10,
+        "leve_count": 5,
+        "grave_count": 3,
+        "mortal_count": 2,
+        "predominant_hour_range": "19-22",
+        "predominant_weekday": "viernes",
+        "via_type": "PLAZA",
+        "predominant_victim_mode": "AUTO",
+        "address_label": "Plaza Constitución — Av. Brasil y Lima",
+        "comuna": "1",
+        "radius_meters": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.4006, -34.5928] },
+      "properties": {
+        "id": "zone_009",
+        "incident_count": 4,
+        "leve_count": 4,
+        "grave_count": 0,
+        "mortal_count": 0,
+        "predominant_hour_range": "07-09",
+        "predominant_weekday": "martes",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "BICICLETA",
+        "address_label": "Av. Las Heras y Pueyrredón",
+        "comuna": "2",
+        "radius_meters": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.4147, -34.5778] },
+      "properties": {
+        "id": "zone_010",
+        "incident_count": 6,
+        "leve_count": 4,
+        "grave_count": 2,
+        "mortal_count": 0,
+        "predominant_hour_range": "16-19",
+        "predominant_weekday": "jueves",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "MOTO",
+        "address_label": "Av. del Libertador y Sarmiento",
+        "comuna": "2",
+        "radius_meters": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.3942, -34.6037] },
+      "properties": {
+        "id": "zone_011",
+        "incident_count": 9,
+        "leve_count": 5,
+        "grave_count": 3,
+        "mortal_count": 1,
+        "predominant_hour_range": "12-15",
+        "predominant_weekday": "miércoles",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "MOTO",
+        "address_label": "Av. Córdoba y Callao",
+        "comuna": "3",
+        "radius_meters": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-58.4156, -34.6219] },
+      "properties": {
+        "id": "zone_012",
+        "incident_count": 3,
+        "leve_count": 3,
+        "grave_count": 0,
+        "mortal_count": 0,
+        "predominant_hour_range": "06-08",
+        "predominant_weekday": "lunes",
+        "via_type": "AVENIDA",
+        "predominant_victim_mode": "PEATÓN",
+        "address_label": "Av. Independencia y Boedo",
+        "comuna": "5",
+        "radius_meters": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CVP</string>
+    <string name="welcome_title">CVP</string>
+    <string name="welcome_subtitle">Capa Vial Predictiva</string>
+</resources>

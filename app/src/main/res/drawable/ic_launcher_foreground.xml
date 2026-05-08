@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Road: horizontal (passes below the pin) -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M18,64 L90,64"
+        android:strokeColor="#FFFFFF"
+        android:strokeAlpha="0.28"
+        android:strokeWidth="6"
+        android:strokeLineCap="round" />
+
+    <!-- Road: diagonal (bottom-left to top-right) -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M26,82 L76,26"
+        android:strokeColor="#FFFFFF"
+        android:strokeAlpha="0.20"
+        android:strokeWidth="5"
+        android:strokeLineCap="round" />
+
+    <!-- Pin halo (outer glow ring) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.14"
+        android:pathData="M34,44 A20,20 0 1 0 74,44 A20,20 0 1 0 34,44 Z" />
+
+    <!-- Pin body: circle (center 54,44 radius 15) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M39,44 A15,15 0 1 0 69,44 A15,15 0 1 0 39,44 Z" />
+
+    <!-- Pin tail: pointed downward -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M44,57 Q54,73 54,73 Q54,73 64,57 Z" />
+
+    <!-- Pin inner circle (dark, creates ring effect) -->
+    <path
+        android:fillColor="#0F1B3C"
+        android:pathData="M47,44 A7,7 0 1 0 61,44 A7,7 0 1 0 47,44 Z" />
+
+    <!-- Pin center dot (accent white) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M51,44 A3,3 0 1 0 57,44 A3,3 0 1 0 51,44 Z" />
+</vector>

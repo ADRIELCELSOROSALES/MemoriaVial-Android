@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politica de Privacidad — Capa Vial Predictiva</title>
+  <style>
+    :root {
+      --navy:       #0F1B3C;
+      --navy-mid:   #1A2F5E;
+      --navy-light: #243A72;
+      --accent:     #4A7FD4;
+      --text:       #1C1C1E;
+      --text-muted: #555E6E;
+      --bg:         #FFFFFF;
+      --bg-section: #F4F6FB;
+      --border:     #DDE3F0;
+      --radius:     8px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--navy);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .app-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    header .subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Section ── */
+    section {
+      margin-bottom: 40px;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: var(--bg-section);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .highlight strong {
+      color: var(--navy);
+    }
+
+    /* ── Permissions table ── */
+    .permissions {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .permissions thead th {
+      background: var(--navy);
+      color: #fff;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+
+    .permissions thead th:first-child {
+      border-radius: var(--radius) 0 0 0;
+    }
+
+    .permissions thead th:last-child {
+      border-radius: 0 var(--radius) 0 0;
+    }
+
+    .permissions tbody tr:nth-child(odd) {
+      background: var(--bg-section);
+    }
+
+    .permissions tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .permissions tbody td:first-child {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.82rem;
+      color: var(--navy-mid);
+      white-space: nowrap;
+    }
+
+    /* ── Steps list ── */
+    ol.steps {
+      padding-left: 1.4em;
+    }
+
+    ol.steps li {
+      margin-bottom: 8px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 28px 24px;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .permissions thead th,
+      .permissions tbody td {
+        padding: 8px 10px;
+      }
+
+      .permissions tbody td:first-child {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="app-label">Capa Vial Predictiva</p>
+  <h1>Politica de Privacidad</h1>
+  <p class="subtitle">Ultima actualizacion: mayo de 2025</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>Resumen</h2>
+    <div class="highlight">
+      <strong>CVP no recopila, almacena ni transmite datos personales.</strong>
+      La aplicacion funciona completamente en tu dispositivo. No hay cuentas de usuario,
+      no hay analitica, no hay publicidad.
+    </div>
+    <p>
+      Esta politica describe que informacion accede Capa Vial Predictiva (CVP), como se utiliza
+      y cuales son tus derechos como usuario.
+    </p>
+  </section>
+
+  <section>
+    <h2>Datos de ubicacion</h2>
+    <p>
+      CVP solicita acceso a tu ubicacion precisa (<code>ACCESS_FINE_LOCATION</code>)
+      exclusivamente para calcular alertas de proximidad a zonas de riesgo vial en tiempo real.
+    </p>
+    <div class="highlight">
+      <strong>Tu ubicacion nunca abandona tu dispositivo.</strong>
+      El calculo de proximidad se realiza localmente. CVP no envia coordenadas ni ninguna
+      informacion de ubicacion a servidores propios ni de terceros.
+    </div>
+    <p>
+      La ubicacion se accede unicamente mientras la aplicacion esta en uso. CVP no solicita
+      acceso a ubicacion en segundo plano.
+    </p>
+  </section>
+
+  <section>
+    <h2>Permisos requeridos</h2>
+    <table class="permissions">
+      <thead>
+        <tr>
+          <th>Permiso</th>
+          <th>Motivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ACCESS_FINE_LOCATION</td>
+          <td>Calcular la distancia entre tu posicion actual y las zonas de riesgo
+              para emitir alertas de proximidad. El procesamiento es local.</td>
+        </tr>
+        <tr>
+          <td>POST_NOTIFICATIONS</td>
+          <td>Mostrar notificaciones de alerta cuando te encontras cerca de una
+              zona con historial de siniestros.</td>
+        </tr>
+        <tr>
+          <td>INTERNET</td>
+          <td>Descargar los tiles del mapa desde los servidores de Mapbox.
+              Unicamente se accede a recursos cartograficos; ningun dato del
+              usuario se transmite.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Servicios de terceros</h2>
+    <p>
+      CVP utiliza <strong>Mapbox</strong> para renderizar el mapa interactivo. Al visualizar
+      el mapa, tu dispositivo descarga tiles cartograficos directamente desde los servidores
+      de Mapbox. Esta comunicacion esta sujeta a la
+      <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">
+        Politica de Privacidad de Mapbox</a>.
+    </p>
+    <p>
+      CVP no integra ningun otro servicio externo. No se utilizan herramientas de
+      analitica (Firebase, Mixpanel, etc.), redes publicitarias ni plataformas de
+      reporte de errores en la nube.
+    </p>
+  </section>
+
+  <section>
+    <h2>Almacenamiento de datos</h2>
+    <p>
+      CVP almacena unicamente preferencias de la aplicacion en el dispositivo
+      mediante Android DataStore:
+    </p>
+    <ul style="padding-left: 1.4em; margin-top: 4px;">
+      <li style="margin-bottom: 6px;">Modo de tema seleccionado (Sistema / Claro / Oscuro).</li>
+      <li style="margin-bottom: 6px;">Radio de alerta de proximidad (en metros).</li>
+      <li>Estado de activacion de las notificaciones de alerta.</li>
+    </ul>
+    <p style="margin-top: 14px;">
+      Estos datos permanecen en tu dispositivo y se eliminan al desinstalar la aplicacion.
+      No se sincronizan con ninguna nube.
+    </p>
+    <p>
+      Los datos de zonas de riesgo vial provienen de archivos GeoJSON incluidos dentro del
+      paquete de la aplicacion (descargados junto con la app desde Google Play). Estos datos
+      son publicos y pertenecen al
+      Observatorio de Movilidad y Seguridad Vial de la Ciudad de Buenos Aires.
+    </p>
+  </section>
+
+  <section>
+    <h2>Lo que CVP no hace</h2>
+    <ul style="padding-left: 1.4em;">
+      <li style="margin-bottom: 6px;">No crea ni requiere cuentas de usuario.</li>
+      <li style="margin-bottom: 6px;">No recopila datos anonimos ni metricas de uso.</li>
+      <li style="margin-bottom: 6px;">No muestra publicidad de ningun tipo.</li>
+      <li style="margin-bottom: 6px;">No vende ni comparte datos con terceros.</li>
+      <li>No accede a contactos, camara, microfono, almacenamiento externo ni
+          ninguna informacion personal.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Como revocar permisos</h2>
+    <p>
+      Podes revocar los permisos otorgados en cualquier momento desde la configuracion
+      del sistema:
+    </p>
+    <ol class="steps">
+      <li>Abri <strong>Configuracion</strong> en tu dispositivo Android.</li>
+      <li>Ingresa a <strong>Aplicaciones</strong> (o "Administrador de aplicaciones").</li>
+      <li>Selecciona <strong>Capa Vial Predictiva</strong>.</li>
+      <li>Toca <strong>Permisos</strong>.</li>
+      <li>Activa o desactiva cada permiso individualmente.</li>
+    </ol>
+    <p style="margin-top: 14px;">
+      Al revocar <code>ACCESS_FINE_LOCATION</code>, las alertas de proximidad dejaran
+      de funcionar. La visualizacion del mapa continuara disponible.
+      Al revocar <code>POST_NOTIFICATIONS</code>, las alertas no se mostraran como
+      notificaciones del sistema.
+    </p>
+  </section>
+
+  <section>
+    <h2>Menores de edad</h2>
+    <p>
+      CVP no esta dirigida a menores de edad y no recopila informacion de personas
+      menores de 13 anos. Dado que la aplicacion no recopila ningun dato personal,
+      no existe riesgo especifico en este sentido.
+    </p>
+  </section>
+
+  <section>
+    <h2>Cambios a esta politica</h2>
+    <p>
+      Si esta politica de privacidad es modificada, la nueva version se publicara en
+      esta misma URL con la fecha de actualizacion actualizada. Se notificara a los
+      usuarios a traves de una actualizacion en Google Play cuando los cambios sean
+      significativos.
+    </p>
+  </section>
+
+  <section>
+    <h2>Contacto</h2>
+    <p>
+      Si tenes preguntas o inquietudes sobre esta politica de privacidad, podes
+      comunicarte por correo electronico a:
+    </p>
+    <p>
+      <a href="mailto:adrielrosales1999@gmail.com">adrielrosales1999@gmail.com</a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p>Capa Vial Predictiva &mdash; Copyright &copy; 2025 Adriel Celso Rosales</p>
+  <p style="margin-top: 6px;">
+    <a href="mailto:adrielrosales1999@gmail.com">adrielrosales1999@gmail.com</a>
+  </p>
+</footer>
+
+</body>
+</html>
