@@ -16,14 +16,10 @@ data class RiskZone(
     val comuna: String,
     val radiusMeters: Double,
 ) {
-    /**
-     * Derived severity based on the worst-case accident type in this zone.
-     * HIGH if any fatality or ≥3 severe injuries; MEDIUM for 1–2 severe injuries; LOW otherwise.
-     */
     val severity: Severity
         get() = when {
-            mortalCount > 0 || graveCount >= 3 -> Severity.HIGH
-            graveCount in 1..2 -> Severity.MEDIUM
-            else -> Severity.LOW
+            mortalCount > 0 -> Severity.HIGH
+            graveCount > 0  -> Severity.MEDIUM
+            else            -> Severity.LOW
         }
 }

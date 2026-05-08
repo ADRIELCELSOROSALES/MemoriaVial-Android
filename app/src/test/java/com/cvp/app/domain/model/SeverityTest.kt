@@ -29,20 +29,16 @@ class SeverityTest {
     }
 
     @Test
-    fun `graveCount three or more yields HIGH`() {
-        assertEquals(Severity.HIGH, zone(grave = 3).severity)
-        assertEquals(Severity.HIGH, zone(grave = 5).severity)
-    }
-
-    @Test
-    fun `graveCount one or two yields MEDIUM`() {
+    fun `any graveCount with no mortal yields MEDIUM`() {
         assertEquals(Severity.MEDIUM, zone(grave = 1).severity)
-        assertEquals(Severity.MEDIUM, zone(grave = 2).severity)
+        assertEquals(Severity.MEDIUM, zone(grave = 3).severity)
+        assertEquals(Severity.MEDIUM, zone(grave = 10).severity)
     }
 
     @Test
-    fun `only leve incidents yields LOW`() {
-        assertEquals(Severity.LOW, zone(leve = 4).severity)
+    fun `only leve incidents yields LOW regardless of count`() {
+        assertEquals(Severity.LOW, zone(leve = 1).severity)
+        assertEquals(Severity.LOW, zone(leve = 50).severity)
     }
 
     @Test
