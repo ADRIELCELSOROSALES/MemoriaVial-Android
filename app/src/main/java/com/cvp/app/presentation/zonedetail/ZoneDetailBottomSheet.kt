@@ -1,7 +1,5 @@
 package com.cvp.app.presentation.zonedetail
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
@@ -10,7 +8,10 @@ import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -31,6 +32,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CalendarToday
 import androidx.compose.material.icons.outlined.Directions
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.Warning
@@ -55,7 +57,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.cvp.app.core.design.theme.CvpTheme
@@ -79,18 +80,17 @@ fun ZoneDetailBottomSheet(
 
 @Composable
 private fun ZoneDetailContent(zone: RiskZone, onDismiss: () -> Unit) {
-    val context = LocalContext.current
     val cvpColors = CvpTheme.colors
 
     val severityColor = when (zone.severity) {
-        Severity.LOW -> cvpColors.severityLow
+        Severity.LOW    -> cvpColors.severityLow
         Severity.MEDIUM -> cvpColors.severityMedium
-        Severity.HIGH -> cvpColors.severityHigh
+        Severity.HIGH   -> cvpColors.severityHigh
     }
     val severityLabel = when (zone.severity) {
-        Severity.LOW -> "Riesgo bajo"
-        Severity.MEDIUM -> "Riesgo medio"
-        Severity.HIGH -> "Riesgo alto"
+        Severity.LOW    -> "Solo incidentes leves"
+        Severity.MEDIUM -> "Con heridos graves"
+        Severity.HIGH   -> "Con víctimas fatales"
     }
 
     val badgeTransition = rememberInfiniteTransition(label = "badgePulse")
@@ -108,20 +108,22 @@ private fun ZoneDetailContent(zone: RiskZone, onDismiss: () -> Unit) {
     LaunchedEffect(Unit) { started = true }
 
     val animSpec = tween<Int>(300, easing = LinearOutSlowInEasing)
-    val animTotal by animateIntAsState(if (started) zone.incidentCount else 0, animSpec, "total")
-    val animLeve by animateIntAsState(if (started) zone.leveCount else 0, animSpec, "leve")
-    val animGrave by animateIntAsState(if (started) zone.graveCount else 0, animSpec, "grave")
-    val animMortal by animateIntAsState(if (started) zone.mortalCount else 0, animSpec, "mortal")
+    val animTotal  by animateIntAsState(if (started) zone.incidentCount else 0, animSpec, "total")
+    val animLeve   by animateIntAsState(if (started) zone.leveCount     else 0, animSpec, "leve")
+    val animGrave  by animateIntAsState(if (started) zone.graveCount    else 0, animSpec, "grave")
+    val animMortal by animateIntAsState(if (started) zone.mortalCount   else 0, animSpec, "mortal")
 
     var showChips by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) { showChips = true }
 
+    var showAdvice by remember { mutableStateOf(false) }
+
     val chips = remember(zone) {
         listOf<Pair<ImageVector, String>>(
-            Icons.Outlined.Schedule to zone.predominantHourRange,
+            Icons.Outlined.Schedule     to zone.predominantHourRange,
             Icons.Outlined.CalendarToday to zone.predominantWeekday,
-            Icons.Outlined.Directions to zone.viaType,
-            Icons.Outlined.Person to zone.predominantVictimMode,
+            Icons.Outlined.Directions   to zone.viaType,
+            Icons.Outlined.Person       to zone.predominantVictimMode,
         )
     }
 
@@ -143,21 +145,21 @@ private fun ZoneDetailContent(zone: RiskZone, onDismiss: () -> Unit) {
                     scaleY = badgeScale
                 },
             ) {
-            Box(
-                modifier = Modifier
-                    .size(56.dp)
-                    .clip(CircleShape)
-                    .background(severityColor.copy(alpha = 0.15f)),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.Warning,
-                    contentDescription = null,
-                    tint = severityColor,
-                    modifier = Modifier.size(28.dp),
-                )
+                Box(
+                    modifier = Modifier
+                        .size(56.dp)
+                        .clip(CircleShape)
+                        .background(severityColor.copy(alpha = 0.15f)),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Warning,
+                        contentDescription = null,
+                        tint = severityColor,
+                        modifier = Modifier.size(28.dp),
+                    )
+                }
             }
-            } // end pulse wrapper
             Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                 Text(
                     text = zone.addressLabel,
@@ -191,11 +193,11 @@ private fun ZoneDetailContent(zone: RiskZone, onDismiss: () -> Unit) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
-            StatItem(value = animTotal, label = "Total")
+            StatItem(value = animTotal,  label = "Total")
             StatDivider()
-            StatItem(value = animLeve, label = "Leve")
+            StatItem(value = animLeve,   label = "Leve")
             StatDivider()
-            StatItem(value = animGrave, label = "Grave")
+            StatItem(value = animGrave,  label = "Grave")
             StatDivider()
             StatItem(value = animMortal, label = "Mortal")
         }
@@ -226,20 +228,45 @@ private fun ZoneDetailContent(zone: RiskZone, onDismiss: () -> Unit) {
             }
         }
 
-        // Explanatory card
-        Surface(
-            shape = RoundedCornerShape(12.dp),
-            color = MaterialTheme.colorScheme.surfaceVariant,
-            modifier = Modifier.fillMaxWidth(),
+        // Expandable safety advice section
+        AnimatedVisibility(
+            visible = showAdvice,
+            enter = fadeIn(tween(200)) + expandVertically(tween(250)),
+            exit  = fadeOut(tween(150)) + shrinkVertically(tween(200)),
         ) {
-            Text(
-                text = "Esta zona concentra ${zone.incidentCount} incidentes registrados. " +
-                    "La mayoría ocurre los ${zone.predominantWeekday.lowercase()} " +
-                    "entre las ${zone.predominantHourRange}.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(12.dp),
-            )
+            Surface(
+                shape = RoundedCornerShape(12.dp),
+                color = severityColor.copy(alpha = 0.08f),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Column(
+                    modifier = Modifier.padding(14.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Warning,
+                            contentDescription = null,
+                            tint = severityColor,
+                            modifier = Modifier.size(16.dp),
+                        )
+                        Text(
+                            text = "¿Por qué tener cuidado aquí?",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = severityColor,
+                        )
+                    }
+                    Text(
+                        text = safetyAdvice(zone),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
         }
 
         // Actions
@@ -248,20 +275,40 @@ private fun ZoneDetailContent(zone: RiskZone, onDismiss: () -> Unit) {
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             FilledTonalButton(
-                onClick = {
-                    val uri = Uri.parse("google.navigation:q=${zone.latitude},${zone.longitude}")
-                    context.startActivity(Intent(Intent.ACTION_VIEW, uri))
-                },
+                onClick = { showAdvice = !showAdvice },
                 modifier = Modifier.weight(1f),
             ) {
-                Icon(Icons.Outlined.Directions, contentDescription = null, modifier = Modifier.size(18.dp))
+                Icon(Icons.Outlined.Info, contentDescription = null, modifier = Modifier.size(18.dp))
                 Spacer(Modifier.width(6.dp))
-                Text("Cómo llegar")
+                Text(if (showAdvice) "Ocultar" else "Más info")
             }
             TextButton(onClick = onDismiss, modifier = Modifier.weight(1f)) {
                 Text("Cerrar")
             }
         }
+    }
+}
+
+private fun safetyAdvice(zone: RiskZone): String {
+    val mode = zone.predominantVictimMode.lowercase()
+    val day  = zone.predominantWeekday
+    val hour = zone.predominantHourRange
+    return when (zone.severity) {
+        Severity.HIGH ->
+            "Esta zona registró ${zone.mortalCount} víctima${if (zone.mortalCount != 1) "s" else ""} fatal${if (zone.mortalCount != 1) "es" else ""}. " +
+            "Los accidentes ocurren con mayor frecuencia los $day entre las $hour. " +
+            "El modo de transporte más afectado es $mode. " +
+            "Extreme la precaución al circular por esta intersección, respete la señalización y reduzca la velocidad."
+        Severity.MEDIUM ->
+            "Zona con ${zone.graveCount} herido${if (zone.graveCount != 1) "s" else ""} grave${if (zone.graveCount != 1) "s" else ""}. " +
+            "El grupo más expuesto son los usuarios de $mode. " +
+            "Mayor riesgo los $day entre las $hour. " +
+            "Circule con especial atención y evite distracciones al pasar por aquí."
+        Severity.LOW ->
+            "Alta frecuencia de incidentes: ${zone.leveCount} herido${if (zone.leveCount != 1) "s" else ""} leve${if (zone.leveCount != 1) "s" else ""} registrados. " +
+            "Los $mode son el grupo más afectado. " +
+            "Mayor actividad los $day entre las $hour. " +
+            "Aunque los incidentes son leves, la recurrencia indica un punto de riesgo permanente."
     }
 }
 
